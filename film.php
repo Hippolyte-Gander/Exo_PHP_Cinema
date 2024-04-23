@@ -1,16 +1,23 @@
 <?php
 
-new Film {
+class Film {
     private string $titreFilm;
     private DateTime $dateSortie;
     private int $dureeFilm;
-    private string $synopsis;
+    private Genre $genreFilm;
+    private  $synopsis;
 
-    public function __construct(string $titreFilm, DateTime $dateSortie, int $dureeFilm) {
+
+    public function __construct(string $titreFilm, $dateSortie, int $dureeFilm,  Genre $genreFilm, $synopsis = null) {
         $this->titreFilm = $titreFilm;
-        $this->dateSortie = $dateSortie;
+        $this->dateSortie = new DateTime($dateSortie);
         $this->dureeFilm = $dureeFilm;
-        $this->synopsis = ();
+        $this->dateSortie = new DateTime($dateSortie);
+        $this->synopsis = $synopsis;
+    }
+
+    public function __toString() {
+        return $this->titreFilm;
     }
 
 
@@ -20,9 +27,7 @@ new Film {
 
 
 
-
-
-
+    # Début des Getter and Setter----------------------------------
 
 
 
