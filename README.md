@@ -1,4 +1,6 @@
-Exercice d'entrainement à la POO.
+Exercice d'entrainement à la POO en PHP.
+Réalisé dans le cadre de ma formation au titre professionnel de dev web / web mobile.
+
 Énoncé:
 Les films seront caractérisés par leur titre, leur date de sortie en France, leur durée (en minutes) 
 ainsi que leur réalisateur (unique, avec nom, prénom, sexe et date de naissance). Un résumé du film 
