@@ -1,56 +1,56 @@
 <?php
 
 class Role {
-    private string $nomPersonnage;
-    private array $listeActeurs;
+    private string $nomDuRole;
+    private array $listeCasting;
 
-    public function __construct(string $nomPersonnage) {
-        $this->nomPersonnage = $nomPersonnage;
-        $this->listeActeurs = [];
+    public function __construct(string $nomDuRole) {
+        $this->nomDuRole = $nomDuRole;
+        $this->listeCasting = [];
     }
 
     public function __toString() {
-        return $this->nomPersonnage;
+        return $this->nomDuRole;
     }
 
-// Ajout d'un role dans le tableau Acteur
-    // public function ajoutRoleDeLActeur(Role $listeRole) {
-    //     $this->listeRoles[] = $listeRole;
-    // }
+    // Ajout d'un acteur dans le tableau role
+    public function ajoutActeurPourRole(Casting $listeActeur) {
+        $this->listeCasting[] = $listeActeur;
+    }
 
-
-
-
-
+// Afficher tous les acteurs pour un rôle
+    public function afficherActeursDuRole() {
+        $result = "Le rôle ".$this. " a été joué par : <br>";
+        foreach ($this->listeCasting as $casting) {
+            $result .= "- " . $casting->getActeur(). " dans le film ". $casting->getFilm() . "<br>";
+        }
+        return $result;
+    }
 
 
     # Début des Getter and Setter----------------------------------
-    public function getNomPersonnage(): string
+    public function getListeCasting(): array
     {
-        return $this->nomPersonnage;
+        return $this->listeCasting;
     }
 
-    public function setNomPersonnage(string $nomPersonnage): self
+    public function setListeCasting(array $listeCasting): self
     {
-        $this->nomPersonnage = $nomPersonnage;
+        $this->listeCasting = $listeCasting;
 
         return $this;
     }
 
-    public function getListeActeurs(): array
+    public function getnomDuRole(): string
     {
-        return $this->listeActeurs;
+        return $this->nomDuRole;
     }
 
-    public function setListeActeurs(array $listeActeurs): self
+    public function setNomPersonnage(string $nomDuRole): self
     {
-        $this->listeActeurs = $listeActeurs;
+        $this->nomDuRole = $nomDuRole;
 
         return $this;
     }
 }
-
-
-
-
 ?>

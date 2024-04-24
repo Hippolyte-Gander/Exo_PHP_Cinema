@@ -2,75 +2,62 @@
 
 class Casting {
     private Film $film;
-    private array $acteurs;
-    private array $roles;
+    private Acteur $acteur;
+    private Role $role;
 
-    public function __construct( Film $film) {
+    public function __construct( Film $film, Acteur $acteur, Role $role) {
         $this->film = $film;
-        $this->acteurs = [];
-        $this->roles = [];
+        $this->acteur = $acteur;
+        $this->role = $role;
+        $role->ajoutActeurPourRole($this); // Ajout du acteur au tableau du casting
+        $acteur->ajoutFilmDeLActeur($this); // Ajout du film au tableau de l'acteur
+        $film->ajoutCastingDuFilm($this); // Ajout du casting au film
     }
     
     public function __toString() {
         return $this->film;
     }
 
- // Ajout du rôle avec l'acteur comme clé
-    public function addRole(Acteur $acteur, Role $role) {
-        $this->roles[$acteur] = $role;
-    }
- // Ajout d'un acteur avec le role comme clé
-    public function addActeur(Role $role, Acteur $acteur) {
-        $this->acteurs[$role] = $acteur;
-    }
-
-
-
-
-
-
-
-
-    // Ajout d'un acteur dans le tableau personnage / role
-    public function ajoutActeurPourRole(Acteur $listeActeur) {
-        $this->acteurs[] = $listeActeur;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-    // Obtenir casting d'un film
-    public function getCastingFilm() {
-        $result = "";
-    }
-
     
-    
-    // $acteurs->ajoutActeurPourRole($this); // Ajout du acteur au tableau du role
-    // $film->ajoutFilmDeLActeur($this); // Ajout du film au tableau de l'acteur
-    // $nomPersonnage->ajoutRoleDeLActeur($this); // Ajout du role au tableau de l'acteur
-
-
-
     # Début des Getter and Setter----------------------------------
+    public function getRole(): Role
+    {
+        return $this->role;
+    }
+
+    public function setRole(Role $role): self
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    public function getActeur(): Acteur
+    {
+        return $this->acteur;
+    }
+
+    public function setActeur(Acteur $acteur): self
+    {
+        $this->acteur = $acteur;
+
+        return $this;
+    }
+
+    public function getFilm(): Film
+    {
+        return $this->film;
+    }
+
+    public function setFilm(Film $film): self
+    {
+        $this->film = $film;
+
+        return $this;
+    }
 
 
 
-
-
-
-
-    
 
 }
-
-
 ?>

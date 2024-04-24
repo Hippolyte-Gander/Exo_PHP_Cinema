@@ -7,6 +7,7 @@ class Film {
     private Genre $genreFilm;
     private Realisateur $realisateurDuFilm;
     private  $synopsis;
+    private array $listeCastings;
 
 
     public function __construct(string $titreFilm, $dateSortie, int $dureeFilm,  Genre $genreFilm, Realisateur $realisateurDuFilm, $synopsis = null) {
@@ -19,15 +20,26 @@ class Film {
         $this->synopsis = $synopsis;
         $realisateurDuFilm->ajoutRealisateur($this); // Ajout du film au tableau du realisateur
         $genreFilm->ajoutGenre($this); // Ajout du film au tableau du genre du film
+        $this->listeCastings = [];
     }
 
     public function __toString() {
         return $this->titreFilm;
     }
 
+// Ajout d'un casting dans le film
+public function ajoutCastingDuFilm(Casting $listeCasting) {
+    $this->listeCastings[] = $listeCasting;
+}
 
-
-
+// Afficher tous les castings d'un film
+public function afficherCastingsDuFilm() {
+    $result = "Casting complet du film ".$this. " : <br>";
+    foreach ($this->listeCastings as $casting) {
+        $result .= "- " . $casting->getRole(). " joué par ". $casting->getActeur() . " dans le film '" .$casting->getFilm() ."'<br>";
+    }
+    return $result;
+}
 
 
 

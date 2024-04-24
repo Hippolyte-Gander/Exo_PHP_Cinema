@@ -28,10 +28,6 @@ class Genre {
     }
 
 
-
-
-
-
     # Début des Getter and Setter----------------------------------
 
 

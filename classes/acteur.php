@@ -6,7 +6,6 @@ class Acteur {
     private DateTime $dateNaissance;
     private string $sexe;
     private array $listeFilms;
-    private array $listeRoles;
 
     public function __construct(string $prenom, string $nom, $dateNaissance, string $sexe) {
         $this->prenom = $prenom;
@@ -14,37 +13,27 @@ class Acteur {
         $this->dateNaissance = new DateTime($dateNaissance);
         $this->sexe = $sexe;
         $this->listeFilms = [];
-        $this->listeRoles = [];
     }
 
     public function __toString() {
         return $this->prenom . " ". $this->nom;
     }
 
-    // Ajout d'un film dans le tableau Acteur
-    public function ajoutFilmDeLActeur(Film $listeFilm) {
+// Ajout d'un film dans le tableau Acteur
+    public function ajoutFilmDeLActeur(Casting $listeFilm) {
         $this->listeFilms[] = $listeFilm;
     }
 
-
-
-
-
-
+// Afficher filmographie d'un acteur
+    public function afficherRolesActeur() {
+        $result = "L'acteur ".$this. " a joué dans les films: <br>";
+        foreach ($this->listeFilms as $film) {
+            $result .= "- " . $film->getFilm() . "<br>";
+        }
+        return $result;
+    }
 
     # Début des Getter and Setter----------------------------------
-    public function getListeRoles(): array
-    {
-        return $this->listeRoles;
-    }
-
-    public function setListeRoles(array $listeRoles): self
-    {
-        $this->listeRoles = $listeRoles;
-
-        return $this;
-    }
-
     public function getListeFilms(): array
     {
         return $this->listeFilms;
@@ -104,9 +93,8 @@ class Acteur {
 
         return $this;
     }
+
+
+
 }
-
-
-
-
 ?>
